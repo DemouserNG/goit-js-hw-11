@@ -1,9 +1,9 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import axios from 'axios';
-import NewsApiaServise from './api-pixabay';
-import LoadMoreBtn from './btn-load-more';
-import  renderPhotoCard  from "./render-function";
+import NewsApiaServise from './js/api-pixabay';
+import LoadMoreBtn from './js/btn-load-more';
+import  renderPhotoCard  from "./js/render-function";
 
  
 const searchForm = document.querySelector('#search-form');
@@ -30,15 +30,22 @@ function onSubmitForm(e) {
 
     newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
     clearHitsContainer();
+
     fetchHits();
 
  
 };
 
-function fetchHits() {
-       loadMoreBtn.disable();
+ function fetchHits() {
+     loadMoreBtn.disable();
     newsApiaServise.fetchPixbayPhotos()
         .then(hits => {
+            
+            // if (hits.total === 0) {
+            //     loadMoreBtn.hide();
+            //     Notify.info('Sorry, there are no images matching your search query. Please try again.');
+            // };
+
             renderCard(hits);
             loadMoreBtn.enable();
     });
