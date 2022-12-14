@@ -34,12 +34,12 @@ function onSubmitForm(e) {
 
 function fetchHits() {
     loadMoreBtn.disable();
-    
-    newsApiaServise.fetchPixbayPhotos() 
-      .then(photo => { 
-          
-            renderCard(photo);
-            loadMoreBtn.enable();  
+
+    newsApiaServise.fetchPixbayPhotos()
+       .then(hits => {
+           renderCard(hits);
+           loadMoreBtn.enable();
+           newsApiaServise.incrementPage();
     })   
              
  };
