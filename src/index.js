@@ -9,8 +9,6 @@ import  renderPhotoCard  from "./js/render-function";
  
 const searchForm = document.querySelector('#search-form');
 const galleryCard = document.querySelector('.gallery');
-// const loadMorBtn = document.querySelector('.load-more');
-
 
 const loadMoreBtn = new LoadMoreBtn({
     selector: '.load-more',
@@ -46,6 +44,13 @@ function fetchHits() {
 
     newsApiaServise.fetchPixbayPhotos()
         .then(hits => {
+            
+            // if (hits.total === 0) {
+            // Notify.info('Sorry, there are no images matching your search query. Please try again.');
+            //     loadMoreBtn.hide();
+            //     return;
+            // }
+            
             renderCard(hits);
             lightbox.refresh();
             loadMoreBtn.enable();

@@ -8,10 +8,20 @@
   </head>
   <body>
 
+<section>
   <form class="search-form" id="search-form">
-    <input type="text" class="search-form-input" name="searchQuery" autocomplete="off" placeholder="Search images..." />
-    <button type="submit" class="search-form-btn">Search</button>
-  </form>
+  <input type="text" class="search-form-input" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+  
+  <button type="submit" class="search-form-btn">
+    <svg class="input-search" width="20" height="20">
+    <use href="./images/sprite.svg#icon-search"></use>
+  </svg>
+</button>
+
+</form>
+  
+</section>
+  
 
   <div class="gallery"></div>
   

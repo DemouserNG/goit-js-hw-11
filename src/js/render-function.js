@@ -4,18 +4,24 @@ export default function renderPhotoCard(photos) {
         return `<div class="photo-card"><a href="${photo.largeImageURL}">
   <img src="${photo.webformatURL}" alt="${photo.tags}" loading="lazy" width="360"/></a>
   <div class="info">
+
+  <div class="info-item-field">
     <p class="info-item">
-      <b>Likes: ${photo.likes}</b>
+      <b>Likes:</b> ${photo.likes}
     </p>
     <p class="info-item">
-      <b>Views: ${photo.views}</b>
+      <b>Views:</b> ${photo.views}
+    </p>
+    </div>
+
+    <div class="info-wrap">
+    <p class="info-item">
+      <b>Comments:</b> ${photo.comments}
     </p>
     <p class="info-item">
-      <b>Comments: ${photo.comments}</b>
+      <b>Downloads:</b> ${photo.downloads}
     </p>
-    <p class="info-item">
-      <b>Downloads: ${photo.downloads}</b>
-    </p>
+ </div>
   </div>
 </div>`
 
