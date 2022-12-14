@@ -1,8 +1,8 @@
 
 export default function renderPhotoCard(photos) {
     const cardEl = photos.map(photo => {
-        return `<div class="photo-card">
-  <img src="${photo.webformatURL} " alt="" loading="lazy" width="360" />
+        return `<div class="photo-card"><a href="${photo.largeImageURL}">
+  <img src="${photo.webformatURL}" alt="${photo.tags}" loading="lazy" width="360"/></a>
   <div class="info">
     <p class="info-item">
       <b>Likes: ${photo.likes}</b>

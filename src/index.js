@@ -1,4 +1,6 @@
 import './css/styles.css';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import NewsApiaServise from './js/api-pixabay';
 import LoadMoreBtn from './js/btn-load-more';
@@ -14,7 +16,13 @@ const loadMoreBtn = new LoadMoreBtn({
     selector: '.load-more',
     hidden: 'true'
 });
+
 const newsApiaServise = new NewsApiaServise();
+
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
 
 searchForm.addEventListener('submit', onSubmitForm);
 loadMoreBtn.refs.button.addEventListener('click', fetchHits);
@@ -29,17 +37,19 @@ function onSubmitForm(e) {
     loadMoreBtn.show();
     newsApiaServise.resetPage();
     clearHitsContainer(); 
-    fetchHits();   
+    fetchHits();
+  
 };
 
 function fetchHits() {
     loadMoreBtn.disable();
 
     newsApiaServise.fetchPixbayPhotos()
-       .then(hits => {
-           renderCard(hits);
-           loadMoreBtn.enable();
-           newsApiaServise.incrementPage();
+        .then(hits => {
+            renderCard(hits);
+            lightbox.refresh();
+            loadMoreBtn.enable();
+            newsApiaServise.incrementPage();
     })   
              
  };
