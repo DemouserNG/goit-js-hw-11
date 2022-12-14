@@ -46,11 +46,11 @@ function fetchHits() {
         .then(hits => {
             
             // if (hits.total === 0) {
-            // Notify.info('Sorry, there are no images matching your search query. Please try again.');
-            //     loadMoreBtn.hide();
-            //     return;
-            // }
+            // Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+            // loadMoreBtn.hide();
             
+            // };
+
             renderCard(hits);
             lightbox.refresh();
             loadMoreBtn.enable();

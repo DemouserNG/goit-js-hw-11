@@ -8,31 +8,33 @@
   </head>
   <body>
 
-<section>
-  <form class="search-form" id="search-form">
-  <input type="text" class="search-form-input" name="searchQuery" autocomplete="off" placeholder="Search images..." />
-  
-  <button type="submit" class="search-form-btn">
-    <svg class="input-search" width="20" height="20">
-    <use href="./images/sprite.svg#icon-search"></use>
-  </svg>
-</button>
-
-</form>
-  
-</section>
-  
-
-  <div class="gallery"></div>
-  
-  <button type="button" class="load-more  button">
-        
-    <span class="spinner-border spinner-border-sm spinner is-hidden" 
-        role="status" 
-        aria-hidden="true"></span>
-    
-        <span class="label">Load more</span>
+<section class="form-section">
+  <div class="container ">
+      <form class="search-form" id="search-form">
+        <input type="text" class="search-form-input" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+      
+        <button type="submit" class="search-form-btn">
+          <svg class="input-search" width="25" height="25">
+            <use href="./images/symbol-defs.svg#icon-search"></use>
+          </svg>
         </button>
+      
+      </form>
+  </div>
+</section>
+ <section >
+  <div class="container">
+    <div class="gallery"></div>
+    
+    <button type="button" class="load-more  button">
+    
+      <span class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
+    
+      <span class="label">Load more</span>
+    </button>
+  </div>
+ </section> 
+
 
   <script src="index.js" type="module"></script>
 
