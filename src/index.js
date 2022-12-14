@@ -1,6 +1,5 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import axios from 'axios';
 import NewsApiaServise from './js/api-pixabay';
 import LoadMoreBtn from './js/btn-load-more';
 import  renderPhotoCard  from "./js/render-function";
@@ -24,32 +23,26 @@ loadMoreBtn.refs.button.addEventListener('click', fetchHits);
 
 function onSubmitForm(e) {
     e.preventDefault();
+    
+    newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
 
     loadMoreBtn.show();
     newsApiaServise.resetPage();
-
-    newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
     clearHitsContainer();
-
     fetchHits();
+    
 
- 
 };
 
- function fetchHits() {
-     loadMoreBtn.disable();
+function fetchHits() {
+    loadMoreBtn.disable();
     newsApiaServise.fetchPixbayPhotos()
         .then(hits => {
-            
-            // if (hits.total === 0) {
-            //     loadMoreBtn.hide();
-            //     Notify.info('Sorry, there are no images matching your search query. Please try again.');
-            // };
-
             renderCard(hits);
-            loadMoreBtn.enable();
-    });
-}
+            loadMoreBtn.enable();  
+    })   
+             
+ };
 
 function renderCard(photos) {
     const card = renderPhotoCard(photos);
