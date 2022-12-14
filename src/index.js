@@ -28,17 +28,17 @@ function onSubmitForm(e) {
 
     loadMoreBtn.show();
     newsApiaServise.resetPage();
-    clearHitsContainer();
-    fetchHits();
-    
-
+    clearHitsContainer(); 
+    fetchHits();   
 };
 
 function fetchHits() {
     loadMoreBtn.disable();
-    newsApiaServise.fetchPixbayPhotos()
-        .then(hits => {
-            renderCard(hits);
+    
+    newsApiaServise.fetchPixbayPhotos() 
+      .then(photo => { 
+          
+            renderCard(photo);
             loadMoreBtn.enable();  
     })   
              

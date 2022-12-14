@@ -141,9 +141,11 @@ display: inline-block;
       gap: 30px;
 }
 
-.photo-card {
-    flex-grow: 1;
-    background: #FFFFFF;
+.info {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 

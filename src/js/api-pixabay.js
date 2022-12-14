@@ -14,23 +14,23 @@ import axios from 'axios';
 
   }
 
-  async  fetchPixbayPhotos() {
-          try {
-            const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${name}&${filter}&per_page=40&page=1`);
-            const photo = await response.data;
-            return photo;
+ fetchPixbayPhotos() {
+      //     try {
+      //       const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${name}&${filter}&per_page=40&page=1`);
+      //       const photo = await response.data;
+      //       return photo;
 
-          } catch (error) {
-            console.log(error);
-       };
+      //     } catch (error) {
+      //       console.log(error);
+      //  };
     
-        // return fetch(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&${filter}&per_page=40&page=${this.page}`)
-        //   .then(response => response.json())
-        //   .then(data => {
-        //     this.incrementPage();
-        //     // console.log(this);
-        //     return data.hits;
-        //   });
+        return fetch(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&${filter}&per_page=40&page=${this.page}`)
+          .then(response => response.json())
+          .then(data => {
+            this.incrementPage();
+            // console.log(this);
+            return data.hits;
+          });
     
       };
       
