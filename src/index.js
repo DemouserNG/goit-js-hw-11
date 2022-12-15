@@ -32,6 +32,15 @@ function onSubmitForm(e) {
     
     newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
 
+    newsApiaServise.fetchPixbayPhotos()
+        .then(photo => {
+        if (photo.hits === 0) {
+            Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+            loadMoreBtn.hide();
+        }
+            return;
+        });
+    
     loadMoreBtn.show();
     newsApiaServise.resetPage();
     clearHitsContainer(); 
@@ -43,21 +52,27 @@ function fetchHits() {
     loadMoreBtn.disable();
 
     newsApiaServise.fetchPixbayPhotos()
-        .then(hits => {
-            
-            // if (hits.total === 0) {
-            // Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-            // loadMoreBtn.hide();
-            
-            // };
-
-            renderCard(hits);
+        .then(photo => {
+            renderCard(photo);
             lightbox.refresh();
             loadMoreBtn.enable();
             newsApiaServise.incrementPage();
-    })   
-             
- };
+            
+        })
+    .then(totalHits => {
+      const photoAll = document.querySelectorAll('a.gallery__image');
+      console.log(photoAll);
+
+      if (photoAll.length === totalHits) {
+        loadMoreBtn.hide();
+        Notify.warning(
+          `We're sorry, but you've reached the end of search results. Please start a new search`);
+      }
+
+      return totalHits;
+    });
+    
+};
 
 function renderCard(photos) {
     const card = renderPhotoCard(photos);
