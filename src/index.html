@@ -8,8 +8,16 @@
   </head>
   <body>
 
-<section class="form-section">
-  <div class="container ">
+<section class="form-section" id="id-btn">
+  <div class="container">
+    <a href="#id-btn">
+      <button type="button" class="btn-up is-hidden" >
+      <svg class="arrow-up" width="25" height="25">
+        <use href="./images/arrow-up.svg#icon-arrow-up2"></use>
+      </svg>
+    </button>
+  </a>
+   
       <form class="search-form" id="search-form">
         <input type="text" class="search-form-input" name="searchQuery" autocomplete="off" placeholder="Search images..." />
       
@@ -22,7 +30,7 @@
       </form>
   </div>
 </section>
- <section >
+ <section>
   <div class="container">
     <div class="gallery"></div>
     

@@ -10,6 +10,7 @@ import  renderPhotoCard  from "./js/render-function";
  
 const searchForm = document.querySelector('#search-form');
 const galleryCard = document.querySelector('.gallery');
+const btnUp = document.querySelector('.btn-up');
 
 const loadMoreBtn = new LoadMoreBtn({
     selector: '.load-more',
@@ -35,11 +36,12 @@ loadMoreBtn.refs.button.addEventListener('click', fetchHits);
 
 function onSubmitForm(e) {
     e.preventDefault();
+    btnUp.classList.remove('is-hidden');
     
     newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
 
     if (newsApiaServise.query === '') {
-        return Notify.info('Please choose the correct name');
+        return Notify.info('Sorry, search field cannot be empty');
     };
 
     onNotifyfailure();
