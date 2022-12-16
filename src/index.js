@@ -2,7 +2,6 @@ import './css/styles.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import OnlyScroll from 'only-scrollbar';
 import NewsApiaServise from './js/api-pixabay';
 import LoadMoreBtn from './js/btn-load-more';
 import  renderPhotoCard  from "./js/render-function";
@@ -24,10 +23,7 @@ const lightbox = new SimpleLightbox(".gallery a", {
     captionDelay: 250
 });
 
-// const scroll = new OnlyScroll('.gallery', {
-//     damping: 0.8,
-//     eventContainer: window
-// });
+
 
 searchForm.addEventListener('submit', onSubmitForm);
 loadMoreBtn.refs.button.addEventListener('click', fetchHits);
@@ -37,13 +33,13 @@ loadMoreBtn.refs.button.addEventListener('click', fetchHits);
 function onSubmitForm(e) {
     e.preventDefault();
     btnUp.classList.remove('is-hidden');
-    
+
     newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
 
     if (newsApiaServise.query === '') {
         return Notify.info('Sorry, search field cannot be empty');
     };
-
+    
     onNotifyfailure();
     loadMoreBtn.show();
     newsApiaServise.resetPage();
@@ -54,15 +50,14 @@ function onSubmitForm(e) {
 
 function fetchHits() {
     loadMoreBtn.disable();
-
+    onNotifyWarning();
     newsApiaServise.fetchPixbayPhotos()
         .then(photo => {
             // console.log(photo);
             renderCard(photo);
             loadMoreBtn.enable();
             newsApiaServise.incrementPage();
-            onNotifyWarning();
-        });
+        })
 };
 
 function onNotifyfailure() {
@@ -75,7 +70,7 @@ function onNotifyfailure() {
                 return;
             }
         });
-}
+};
 function onNotifyWarning() {
     newsApiaServise.fetchPixbayPhotos()
         .then(photo => {
