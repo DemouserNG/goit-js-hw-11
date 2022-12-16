@@ -20,7 +20,7 @@ const newsApiaServise = new NewsApiaServise();
 
 const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
-    captionDelay: 250,
+    captionDelay: 250
 });
 
 // const scroll = new OnlyScroll('.gallery', {
@@ -38,6 +38,10 @@ function onSubmitForm(e) {
     
     newsApiaServise.query = e.currentTarget.elements.searchQuery.value;
 
+    if (newsApiaServise.query === '') {
+        return Notify.info('Please choose the correct name');
+    };
+
     onNotifyfailure();
     loadMoreBtn.show();
     newsApiaServise.resetPage();
@@ -53,7 +57,6 @@ function fetchHits() {
         .then(photo => {
             // console.log(photo);
             renderCard(photo);
-            lightbox.refresh();
             loadMoreBtn.enable();
             newsApiaServise.incrementPage();
             onNotifyWarning();
@@ -68,7 +71,7 @@ function onNotifyfailure() {
                 Notify.failure('Sorry, there are no images matching your search query. Please try again.');
                 loadMoreBtn.hide();
                 return;
-            };
+            }
         });
 }
 function onNotifyWarning() {
@@ -88,7 +91,8 @@ function onNotifyWarning() {
 function renderCard(photos) {
     const card = renderPhotoCard(photos);
     galleryCard.insertAdjacentHTML('beforeend', card);
-
+    lightbox.refresh();
+    
 };
 
 function clearHitsContainer() {
