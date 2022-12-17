@@ -43,6 +43,11 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  transition: transform 250ms ease-out;
+}
+img:hover {
+ transform: scale(1.1);
+ 
 }
 .container {
   width: 1200px;
@@ -50,9 +55,8 @@ img {
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-  /* outline:  1px solid brown; */
+  outline:  1px solid brown;
 
- 
 }
 .form-section {
   background-color: #1d76be;
@@ -145,6 +149,7 @@ display: inline-block;
   
   
 }
+
 /*---------- card------ */
 .photo-card { 
   display: flex;
@@ -184,21 +189,19 @@ display: inline-block;
 }
 
 .btn-up {
-  /* position: absolute; */
   position: fixed;
-    right: 30px;
-    bottom: 30px;
-  
-    display: inline-block;
-    width: 64px;
-    height: 64px;
-  
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 50px;
-    background-color: rgb(216, 216, 216);
-    cursor: pointer;
+  z-index: 100;
+  right: 200px;
+  bottom: 30px;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: rgb(216, 216, 216);
+  cursor: pointer;
 
   
 }
