@@ -6,7 +6,6 @@ import NewsApiaServise from './js/api-pixabay';
 import LoadMoreBtn from './js/btn-load-more';
 import renderPhotoCard from "./js/render-function";
 
- 
 const searchForm = document.querySelector('#search-form');
 const galleryCard = document.querySelector('.gallery');
 const btnUp = document.querySelector('#scroll-to-top');
@@ -22,7 +21,6 @@ const lightbox = new SimpleLightbox(".gallery a", {
     captionsData: "alt",
     captionDelay: 250
 });
-
 
 searchForm.addEventListener('submit', onSubmitForm);
 loadMoreBtn.refs.button.addEventListener('click', fetchHits);
@@ -45,20 +43,24 @@ function onSubmitForm(e) {
     newsApiaServise.resetPage();
     clearHitsContainer(); 
     fetchHits();
+
+    
   
 };
 
 function fetchHits() {
     loadMoreBtn.disable();
     onNotifyWarning();
-    
+   
     newsApiaServise.fetchPixbayPhotos()
         .then(photo => {
             // console.log(photo);
             renderCard(photo);
             loadMoreBtn.enable();
             newsApiaServise.incrementPage();
+            
         })
+
 };
 
 function onNotifyfailure() {

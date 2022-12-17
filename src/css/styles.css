@@ -12,10 +12,6 @@ body {
   line-height: 1.5;
   margin: 0 auto;
 
-  /* background-image: linear-gradient(rgba(147, 147, 150, 0.4), rgba(147, 147, 150, 0.4)), url(../images/pexels-miguel-á-padriñán-19670.jpg); */
-  /* background-size: cover;
-  background-attachment: fixed; */
-
 }
 #search-box {
   font: inherit;
@@ -55,7 +51,7 @@ img:hover {
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-  outline:  1px solid brown;
+  /* outline:  1px solid brown; */
 
 }
 .form-section {
@@ -103,7 +99,8 @@ img:hover {
     border-color: transparent;
     border: 1px solid rgb(216, 216, 216);
     cursor: pointer;
-    transition-property: color, background-color, box-shadow;
+    background-color: rgb(237, 235, 235);
+    transition-property: background-color;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -130,7 +127,7 @@ display: inline-block;
   line-height: 1.62;
   letter-spacing: 0.03em;
   cursor: pointer;
-  transition-property: color, background-color, box-shadow;
+  transition-property: background-color, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
