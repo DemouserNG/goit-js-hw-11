@@ -43,9 +43,7 @@ function onSubmitForm(e) {
     newsApiaServise.resetPage();
     clearHitsContainer(); 
     fetchHits();
-
-    
-  
+ 
 };
 
 function fetchHits() {
@@ -89,8 +87,6 @@ function onNotifyWarning() {
             }
         });
 }
-
-
 
 function renderCard(photos) {
     const card = renderPhotoCard(photos);
